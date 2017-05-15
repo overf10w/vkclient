@@ -4,9 +4,12 @@ var router = express.Router();
 
 // VK
 router.route('/vkontakte')
+  .get(passport.authenticate('vkontakte', { scope: ['status', 'email', 'friends', 'notify'] }));
+
+router.route('/vkontakte/callback')
   .get(passport.authenticate('vkontakte', {
-    successRedirect: '/index.html',
-    failure: '/index.html'
+    successRedirect: '/',
+    failure: '/'
   }));
 
 module.exports = router;

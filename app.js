@@ -17,19 +17,21 @@ app.listen(3000, function () {
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+app.use(session({ secret: 'anything' }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Use routes
 app.use('/', index);
 app.use('/auth', auth);
 
-app.use(session({ secret: 'anything' }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 passport.use(new VKontakteStrategy(
   {
     clientID: '6032264', // VK.com docs call it 'API ID', 'app_id', 'api_id', 'client_id' or 'apiId'
     clientSecret: 'PNMX4QFSzlxrpkua7nIk',
-    callbackURL: "http://localhost:3000/auth/vkontakte"
+    callbackURL: "http://localhost:3000/auth/vkontakte/callback"
   },
   function myVerifyCallbackFn(accessToken, refreshToken, params, profile, done) {
     console.log(profile);
@@ -42,6 +44,7 @@ passport.use(new VKontakteStrategy(
     // User.findOrCreate({ vkontakteId: profile.id })
     //   .then(function (user) { done(null, user); })
     //   .catch(done);
+    done(null, profile);
   }
 ));
 
