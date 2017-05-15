@@ -3,15 +3,10 @@ var passport = require('passport');
 var router = express.Router();
 
 // VK
-router.route('/vk/callback')
-  .get(passport.authenticate('google', {
-    successRedirect: '/users/',
-    failure: '/error/'
+router.route('/vkontakte')
+  .get(passport.authenticate('vkontakte', {
+    successRedirect: '/index.html',
+    failure: '/index.html'
   }));
-router.route('/google')
-  .get(passport.authenticate('google', {
-    scope: ['https://www.googleapis.com/auth/userinfo.profile',
-            'https://www.googleapis.com/auth/userinfo.email']
-  }));
-  
+
 module.exports = router;
