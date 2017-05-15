@@ -11,7 +11,8 @@ router.use('/', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
   // user is added to req by Passport
-  res.render('users', { user: { name: req.user.displayName } });
+  console.log(req.user);
+  res.render('user', { user: req.user });
 });
 
 module.exports = router;

@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Axaxa</title>
+  </head>
+  <body>
+    <div>
+      <img src="<%=user._json.photo%>">
+      <h1>HELLO, <%=user._json.first_name%> <%=user._json.last_name%></h1>
+    </div>
+    <div>
+    Profile:
+      <ul>
+        <li>
+          First name: <%=user._json.first_name%>
+        </li>
+        <li>
+          Last name: <%=user._json.last_name%>
+        </li>
+        <li>
+          Birthday date: <%=user._json.bdate%>
+        </li>
+        <li>
+          Status: <%=user._json.status%>
+        </li>
+        <li>
+          Friends: <%=user._json.counters.friends%>
+        </li>
+        <li>
+          Online Friends: <%=user._json.counters.online_friends%>
+        </li>
+        <li>
+          Subscriptions: <b><%=user._json.counters.pages%></b>
+        </li>
+        <li>
+          Audios: <b><%=user._json.counters.audios%></b>
+        </li>
+        <li>
+          Videos: <b><%=user._json.counters.videos%></b>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
