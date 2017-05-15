@@ -14,8 +14,8 @@ app.listen(3000, function () {
 });
 
 // set up view engine
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+// app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 app.use(session({ secret: 'anything' }));
 
@@ -25,7 +25,6 @@ app.use(passport.session());
 // Use routes
 app.use('/', index);
 app.use('/auth', auth);
-
 
 passport.use(new VKontakteStrategy(
   {
